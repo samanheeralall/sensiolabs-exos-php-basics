@@ -8,11 +8,9 @@ class EventDispatcher
         $this->listeners[$eventName][] = $listener;
     }
 
-    public function dispatch(object $event, string $eventName) : object
+    public function dispatch(object $event, ?string $eventName = null) : object
     {
-        if (!isset($this->listeners[$eventName])) {
-            return $event;
-        }
+        $eventName ??= $event::class;
 
         foreach ($this->listeners[$eventName] as $listener) {
             $listener($event);
