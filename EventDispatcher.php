@@ -12,6 +12,10 @@ class EventDispatcher
     {
         $eventName ??= $event::class;
 
+        if (!isset($this->listeners[$eventName])) {
+            throw new NoListenerRegisteredException($eventName, $event);
+        }
+
         foreach ($this->listeners[$eventName] as $listener) {
             if ($listener instanceof EventListenerInterface){
                 $listener->handle($event);
