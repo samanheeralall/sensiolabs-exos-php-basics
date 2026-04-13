@@ -34,7 +34,7 @@
 - `$eventName ??= $event::class` → si pas de nom fourni, on utilise le FQCN de l'objet comme nom
 - `dispatch` retourne l'event pour qu'on puisse lire les modifications faites par les listeners
 
-## Closures et Callables — Ce qu'il faut retenir pour la certif Symfony 8
+## Closures et Callables
 
 ### callable = "est-ce que ça s'appelle avec () ?"
 
