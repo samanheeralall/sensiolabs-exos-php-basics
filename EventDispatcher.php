@@ -13,7 +13,11 @@ class EventDispatcher
         $eventName ??= $event::class;
 
         foreach ($this->listeners[$eventName] as $listener) {
-            $listener($event);
+            if ($listener instanceof EventListenerInterface){
+                $listener->handle($event);
+            }else{
+                $listener($event);
+            }
         }
 
         return $event;
